@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './Todo.css';
 
 function Todo () {
-    function Task ({ task }) {
+    function Task ({ task , index, completeTask}) {
         return (
             <div
                 className="task"
                 style={{ textDecoration: task.completed ? "line-through" : "" }}
                 >
                     {task.title}
+                <button onClick={() => completeTask(index)}>Complete</button>
                 </div>
         )
     }
@@ -55,6 +56,11 @@ function Todo () {
         const newTasks = [...tasks, { title, completed: false}];
         setTasks(newTasks);
     }
+    const completeTask = index => {
+        const newTasks = [...tasks];
+        newTasks[index].completed = true;
+        setTasks(newTasks);
+    }
     return (
         <div className="todo-container">
             <div className="header">TODO - ITEMS</div>
@@ -63,6 +69,7 @@ function Todo () {
                     <Task
                         task={task}
                         index={index}
+                        completeTask={completeTask}
                         key={index}
                     />
                 ))}
