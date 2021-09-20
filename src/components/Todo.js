@@ -1,46 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Todo.css';
 
-function Task({ task }) {
-    return (
-        <div
-            className="task"
-            style={{ textDecoration: task.completed ? "line-through" : "" }}
-        >
-            {task.title}
-        </div>
-    );
-}
-function Todo() {
-    // eslint-disable-next-line no-unused-vars
-    const [tasks, setTasks] = useState([
-        {
-            title: "Grab some Pizza",
-            completed: true
-        },
-        {
-            title: "Do your workout",
-            completed: true
-        },
-        {
-            title: "Hangout with friends",
-            completed: false
-        }
-    ]);
+function Todo () {
     return (
         <div className="todo-container">
             <div className="header">TODO - ITEMS</div>
             <div className="tasks">
-                {tasks.map((task, index) => (
-                    <Task
-                        task={task}
-                        index={index}
-                        key={index}
-                    />
-                ))}
+                <div className="task">
+                    Grab some Pizza
+                </div>
+                <div className="task">
+                    Do your workout
+                </div>
             </div>
         </div>
-    );
+    )
 }
+
 
 export default Todo;
